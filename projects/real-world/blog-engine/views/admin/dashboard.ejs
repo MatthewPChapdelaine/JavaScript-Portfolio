@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+
+    <%- include('../partials/messages') %>
+
+    <div class="admin-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3><%= stats.totalPosts %></h3>
+          <p>Total Posts</p>
+        </div>
+        <div class="stat-card">
+          <h3><%= stats.publishedPosts %></h3>
+          <p>Published Posts</p>
+        </div>
+        <div class="stat-card">
+          <h3><%= stats.draftPosts %></h3>
+          <p>Draft Posts</p>
+        </div>
+        <div class="stat-card">
+          <h3><%= stats.totalUsers %></h3>
+          <p>Total Users</p>
+        </div>
+        <div class="stat-card">
+          <h3><%= stats.totalComments %></h3>
+          <p>Total Comments</p>
+        </div>
+      </div>
+
+      <div class="admin-sections">
+        <div class="admin-section">
+          <h2>Quick Links</h2>
+          <ul class="admin-links">
+            <li><a href="/admin/posts">Manage Posts</a></li>
+            <li><a href="/admin/users">Manage Users</a></li>
+            <li><a href="/admin/comments">Manage Comments</a></li>
+            <li><a href="/posts/new">Create New Post</a></li>
+          </ul>
+        </div>
+
+        <div class="admin-section">
+          <h2>Recent Posts</h2>
+          <ul class="recent-list">
+            <% recentPosts.forEach(post => { %>
+              <li>
+                <a href="/posts/<%= post.slug %>"><%= post.title %></a>
+                <span class="status <%= post.status %>"><%= post.status %></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="admin-section">
+          <h2>Recent Comments</h2>
+          <ul class="recent-list">
+            <% recentComments.forEach(comment => { %>
+              <li>
+                <strong><%= comment.username %></strong> on 
+                <a href="/posts/<%= comment.post_title %>"><%= comment.post_title %></a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

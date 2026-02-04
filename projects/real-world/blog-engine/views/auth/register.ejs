@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <div class="auth-container">
+      <h1><%= title %></h1>
+      
+      <%- include('../partials/messages') %>
+
+      <form action="/auth/register" method="POST" class="auth-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" value="<%= typeof formData !== 'undefined' ? formData.username : '' %>" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="<%= typeof formData !== 'undefined' ? formData.email : '' %>" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input type="password" id="password2" name="password2" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </form>
+
+      <p class="auth-link">Already have an account? <a href="/auth/login">Login here</a></p>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

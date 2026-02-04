@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#art">Art</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#writing">Writing</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Your Name</h1>
+            <h2>Artist & Game Designer</h2>
+            <p>Crafting Immersive Worlds Through Art and Code</p>
+            <a href="#portfolio" class="btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <img src="https://via.placeholder.com/300" alt="Your Photo">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>I’m a passionate creator blending art, games, and storytelling. With a background in [your field], I bring ideas to life through creativity and technical skill.</p>
+                <ul>
+                    <li>Digital Art</li>
+                    <li>Game Design</li>
+                    <li>Writing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div id="art">
+            <h3>Art</h3>
+            <div class="art-gallery">
+                <img src="https://via.placeholder.com/200" alt="Artwork 1" onclick="openLightbox(this)">
+                <img src="https://via.placeholder.com/200" alt="Artwork 2" onclick="openLightbox(this)">
+                <img src="https://via.placeholder.com/200" alt="Artwork 3" onclick="openLightbox(this)">
+            </div>
+        </div>
+        <div id="games">
+            <h3>Games</h3>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300" alt="Game 1">
+                <h4>Orbspace</h4>
+                <p>A sci-fi adventure game built in Unity.</p>
+                <button onclick="toggleDetails(this)">Learn More</button>
+                <div class="details" style="display: none;">
+                    <p>Tools: Unity, C#</p>
+                    <p>Status: In Progress</p>
+                </div>
+            </div>
+        </div>
+        <div id="writing">
+            <h3>Writing</h3>
+            <p>"The wind howled through the ruins, whispering secrets of a lost age..."</p>
+            <a href="#">Read the full story</a>
+        </div>
+        <div id="community">
+            <h3>Community Involvement</h3>
+            <ul>
+                <li>Newgrounds Contributor: Earned 5 medals for art and game submissions.</li>
+                <li>Collaborated on [Project Name] with [User/Group].</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">Newgrounds</a>
+        </div>
+    </section>
+
+    <!-- Lightbox for Art -->
+    <div id="lightbox" style="display: none;">
+        <span onclick="closeLightbox()">×</span>
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

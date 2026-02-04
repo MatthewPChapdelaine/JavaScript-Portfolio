@@ -1,0 +1,16 @@
+{
+  "name": "node-project-template",
+  "version": "1.0.0",
+  "description": "A basic Node.js project template",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": ["template", "nodejs"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

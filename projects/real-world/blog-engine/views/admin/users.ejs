@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+    
+    <%- include('../partials/messages') %>
+
+    <a href="/admin" class="btn btn-secondary">Back to Dashboard</a>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Posts</th>
+          <th>Joined</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(u => { %>
+          <tr>
+            <td><%= u.username %></td>
+            <td><%= u.email %></td>
+            <td><%= u.role %></td>
+            <td><%= u.postCount %></td>
+            <td><%= new Date(u.created_at).toLocaleDateString() %></td>
+            <td>
+              <% if (u.id !== user.id) { %>
+                <form action="/admin/users/<%= u.id %>?_method=DELETE" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+              <% } else { %>
+                <span class="text-muted">Current User</span>
+              <% } %>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

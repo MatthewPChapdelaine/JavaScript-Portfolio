@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbspace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Orbspace</h1>
+        <div id="status-bars" class="section">
+            <div class="bar-container">
+                <label>Funds</label>
+                <div class="progress-bar" id="funds-bar"></div>
+            </div>
+            <div class="bar-container">
+                <label>Weeks</label>
+                <div class="progress-bar" id="weeks-bar"></div>
+            </div>
+            <div class="bar-container">
+                <label>State</label>
+                <div id="state-indicator"></div>
+            </div>
+        </div>
+        <div id="status" class="section">
+            <p>Week: <span id="week"></span></p>
+            <p>Rank: <span id="rank"></span></p>
+            <p>Allegiance: <span id="allegiance"></span></p>
+            <p>Opponent: <span id="opponent"></span></p>
+            <p>State: <span id="state"></span></p>
+            <p>Location: <span id="location"></span></p>
+            <p>Funds: <span id="funds"></span> credits</p>
+        </div>
+        <div id="messages" class="section"></div>
+        <div id="actions" class="section">
+            <div id="travel-section"></div>
+            <div id="activity-section"></div>
+            <div id="mission-section"></div>
+            <div id="renew-section"></div>
+            <button id="next-week">Next Week</button>
+            <button id="replay" style="display: none;">Replay</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

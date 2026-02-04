@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  
+  <main class="container">
+    <div class="about-page">
+      <h1>About Blog Engine</h1>
+      <p>Blog Engine is a full-featured blogging platform built with modern web technologies.</p>
+      
+      <h2>Features</h2>
+      <ul>
+        <li>User authentication and authorization</li>
+        <li>Create, read, update, and delete blog posts</li>
+        <li>Markdown support for rich content</li>
+        <li>Comments system</li>
+        <li>Admin panel for content management</li>
+        <li>RESTful API</li>
+        <li>Search functionality</li>
+        <li>Responsive design</li>
+      </ul>
+
+      <h2>Technology Stack</h2>
+      <ul>
+        <li>Node.js & Express.js</li>
+        <li>SQLite Database</li>
+        <li>Passport.js for Authentication</li>
+        <li>EJS Templates</li>
+        <li>Marked for Markdown Parsing</li>
+      </ul>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

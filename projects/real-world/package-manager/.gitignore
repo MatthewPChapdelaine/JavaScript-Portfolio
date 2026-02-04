@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+mini-pkg-lock.json
+dependency-graph.html
+test-project/node_modules/
+test-project/mini-pkg-lock.json

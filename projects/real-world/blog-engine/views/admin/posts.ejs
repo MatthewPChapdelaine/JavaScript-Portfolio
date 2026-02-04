@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+    
+    <%- include('../partials/messages') %>
+
+    <a href="/admin" class="btn btn-secondary">Back to Dashboard</a>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Status</th>
+          <th>Views</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.forEach(post => { %>
+          <tr>
+            <td><a href="/posts/<%= post.slug %>"><%= post.title %></a></td>
+            <td><%= post.author_name %></td>
+            <td><span class="status <%= post.status %>"><%= post.status %></span></td>
+            <td><%= post.views %></td>
+            <td><%= new Date(post.created_at).toLocaleDateString() %></td>
+            <td>
+              <a href="/posts/<%= post.slug %>/edit" class="btn btn-sm">Edit</a>
+              <form action="/posts/<%= post.slug %>?_method=DELETE" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

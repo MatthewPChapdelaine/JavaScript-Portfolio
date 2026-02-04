@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  
+  <main class="container">
+    <%- include('partials/messages') %>
+    
+    <div class="hero">
+      <h1>Welcome to Blog Engine</h1>
+      <p>A modern blogging platform built with Express.js</p>
+    </div>
+
+    <% if (posts.length > 0) { %>
+      <div class="posts-grid">
+        <% posts.forEach(post => { %>
+          <article class="post-card">
+            <h2><a href="/posts/<%= post.slug %>"><%= post.title %></a></h2>
+            <div class="post-meta">
+              <span>By <%= post.author_name %></span>
+              <span><%= new Date(post.created_at).toLocaleDateString() %></span>
+              <span><%= post.views %> views</span>
+              <span><%= post.commentCount %> comments</span>
+            </div>
+            <p><%= post.excerpt || post.content.substring(0, 200) + '...' %></p>
+            <a href="/posts/<%= post.slug %>" class="btn btn-primary">Read More</a>
+          </article>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <p class="no-posts">No posts yet. <% if (user) { %><a href="/posts/new">Create the first post!</a><% } %></p>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+    
+    <%- include('../partials/messages') %>
+
+    <form action="/posts" method="POST" class="post-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="<%= typeof formData !== 'undefined' ? formData.title : '' %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="excerpt">Excerpt (Optional)</label>
+        <textarea id="excerpt" name="excerpt" rows="2"><%= typeof formData !== 'undefined' ? formData.excerpt : '' %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content (Markdown supported)</label>
+        <textarea id="content" name="content" rows="15" required><%= typeof formData !== 'undefined' ? formData.content : '' %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" name="status">
+          <option value="draft">Draft</option>
+          <option value="published">Published</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Post</button>
+      <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

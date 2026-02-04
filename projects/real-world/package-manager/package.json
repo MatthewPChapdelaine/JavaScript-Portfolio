@@ -1,0 +1,25 @@
+{
+  "name": "mini-pkg-manager",
+  "version": "1.0.0",
+  "description": "A simplified NPM-like package manager with dependency resolution and lock files",
+  "main": "lib/index.js",
+  "bin": {
+    "mini-pkg": "./bin/mini-pkg.js"
+  },
+  "scripts": {
+    "start": "node bin/mini-pkg.js",
+    "test": "node test-project/test.js",
+    "graph": "node bin/mini-pkg.js graph",
+    "setup-registry": "node lib/setup-registry.js"
+  },
+  "keywords": ["package-manager", "npm", "dependency-resolution"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "semver": "^7.5.4"
+  },
+  "devDependencies": {}
+}

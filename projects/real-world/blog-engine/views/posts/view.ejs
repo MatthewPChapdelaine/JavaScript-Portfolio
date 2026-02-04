@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Blog Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <%- include('../partials/messages') %>
+    
+    <article class="post-view">
+      <h1><%= post.title %></h1>
+      <div class="post-meta">
+        <span>By <%= post.author_name %></span>
+        <span><%= new Date(post.created_at).toLocaleDateString() %></span>
+        <span><%= post.views %> views</span>
+        <% if (post.status === 'draft') { %>
+          <span class="status draft">Draft</span>
+        <% } %>
+      </div>
+
+      <% if (user && (user.id === post.author_id || user.role === 'admin')) { %>
+        <div class="post-actions">
+          <a href="/posts/<%= post.slug %>/edit" class="btn btn-secondary">Edit</a>
+          <form action="/posts/<%= post.slug %>?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+          </form>
+        </div>
+      <% } %>
+
+      <div class="post-content">
+        <%- post.htmlContent %>
+      </div>
+    </article>
+
+    <section class="comments-section">
+      <h2>Comments (<%= comments.length %>)</h2>
+
+      <% if (user) { %>
+        <form action="/posts/<%= post.slug %>/comments" method="POST" class="comment-form">
+          <textarea name="content" placeholder="Add a comment..." required></textarea>
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+      <% } else { %>
+        <p><a href="/auth/login">Login</a> to leave a comment.</p>
+      <% } %>
+
+      <div class="comments-list">
+        <% comments.forEach(comment => { %>
+          <div class="comment">
+            <div class="comment-header">
+              <strong><%= comment.username %></strong>
+              <span><%= new Date(comment.created_at).toLocaleDateString() %></span>
+            </div>
+            <p><%= comment.content %></p>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
